@@ -2,7 +2,9 @@ package com.example.todolist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.todolist.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,5 +31,10 @@ class MainActivity : AppCompatActivity() {
         btnADeleteDoneTodo.setOnClickListener {
             todoAdapter.deleteDoneTodos()
         }
+
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(
+            this, R.layout.activity_main)
+
+        binding.user = User("Test", "User")
     }
 }
