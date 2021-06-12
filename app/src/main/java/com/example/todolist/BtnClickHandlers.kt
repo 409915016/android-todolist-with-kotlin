@@ -1,15 +1,16 @@
 package com.example.todolist
 
-
+import android.util.Log
+import android.view.View
 import android.widget.Toast
-import com.example.todolist.databinding.ActivityMainBinding
 
 class BtnClickHandlers {
-    fun onShowMyNameBtnHandle(user: User) {
+    fun onShowMyNameBtnHandle() {
 
-        val text = user.firstName
-        val duration = Toast.LENGTH_SHORT
-        //Toast.makeText(this, text, duration).show()
+//        val text = user.firstName
+//        val duration = Toast.LENGTH_SHORT
+        Log.d("123", "2131")
+        //Toast.makeText(view.context, text, duration).show()
     }
 
 }

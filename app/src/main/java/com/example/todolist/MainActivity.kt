@@ -1,14 +1,16 @@
 package com.example.todolist
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import com.example.todolist.BtnClickHandlers
+import com.example.todolist.data.DataViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var todoAdapter: TodoAdapter
     private lateinit var binding: ActivityMainBinding
@@ -35,22 +37,22 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        val viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(DataViewModel::class.java)
+
         // data binding
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
             this, R.layout.activity_main)
 
         binding.user = User("Test", "User")
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = this
+
+
 
         // view binding
         val _ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = _ActivityMainBinding.root
         setContentView(view)
-
-//        _ActivityMainBinding.showMyNameBtn.setOnClickListener {
-//
-//        }
-
-
 
     }
 
